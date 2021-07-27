@@ -7,7 +7,6 @@ class SearchableMixin(object):
     def search(cls, expression, page, per_page):
         ids, total = query_index(cls.__tablename__, expression, page, per_page)
         if total == 0:
-            print('какая-то хрень')
             return cls.query.filter_by(id=0), 0
         when = []
         for i in range(len(ids)):

@@ -3,7 +3,6 @@ from app import el_search
 
 def add_to_index(index, model):
     if not el_search:
-        print('что-то не так')
         return
     payload = {}
     for field in model.__searchable__:
