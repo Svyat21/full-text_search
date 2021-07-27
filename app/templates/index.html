@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang=ru>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <form action="" method="get">
+            <label>
+                <input type="text" name="q" placeholder="Search" value="{{ request.args.get('q', '') }}">
+            </label>
+        </form>
+    </div>
+    <div>
+        {% if posts %}
+            <p>Всего найдено {{ total.value }} совпадений</p>
+            {% if total.value >= 20 %}
+                <p>Показаны первые 20</p>
+            {% endif %}
+            <br>
+            {% for post in posts.all() %}
+                <p>{{ post.created_date }}</p>
+                <p>{{ post.text }}</p>
+                <br>
+            {% endfor %}
+        {% endif %}
+    </div>
+</body>
+</html>
